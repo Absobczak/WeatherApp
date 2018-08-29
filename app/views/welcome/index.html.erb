@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+        <div class="well">
+            <h1>Look Up Weather</h1>
+            <p>What city do you want to check?</p>
+            <p>(please put country code/name after zip/city, ex. 43219, us or London,UK or London, Great Britain)</p>
+            <div>
+                <%= form_tag index_path do %>
+                <%= text_field_tag :zipcode, nil, placeholder: "zipcode or city,country", class: "form-control" %>
+                <%= submit_tag "Check Weather", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if @location != nil %>
+<div class ="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="well">
+                
+            <h1> Forecast for <%= @location %>, <%= @country %></h1>
+                
+                <div class="row">
+                    <div class="col-md-7">
+                        <p>
+                            <em>Hows the weather?</em>
+                        </p>
+                        <p>
+                            Temperature is <%= @temperature %>&degF
+                        </p>
+                        <p>
+                            Cloud cover: <%= @cloudiness %>
+                        </p>
+                        <p>
+                            Wind: <%= @windiness %> mph
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <p>
+                            <%= @weahter_words %>
+                            <img src="http://openweathermap.org/img/w/<%= @weather_icon %>.png">
+                        </p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<% end %>
